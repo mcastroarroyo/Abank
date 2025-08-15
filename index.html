@@ -275,19 +275,18 @@
                 return label;
             }
             const words = label.split(' ');
-            let lines = [];
-            let currentLine = '';
-            for (const word of words) {
-                if ((currentLine + ' ' + word).trim().length > maxLength && currentLine.length > 0) {
+            const lines = [];
+            let currentLine = words[0];
+
+            for (let i = 1; i < words.length; i++) {
+                if (currentLine.length + words[i].length + 1 > maxLength) {
                     lines.push(currentLine);
-                    currentLine = word;
+                    currentLine = words[i];
                 } else {
-                    currentLine = (currentLine + ' ' + word).trim();
+                    currentLine += ' ' + words[i];
                 }
             }
-            if (currentLine.length > 0) {
-                lines.push(currentLine);
-            }
+            lines.push(currentLine);
             return lines;
         }
 
@@ -349,7 +348,7 @@
         new Chart(document.getElementById('modelComparisonChart'), {
             type: 'bar',
             data: {
-                labels: modelComparisonLabels.map(label => processLabel(label)),
+                labels: modelComparisonLabels.map(label => processLabel(label, 12)),
                 datasets: [
                     {
                         label: 'Agente Humano',
@@ -369,6 +368,11 @@
                 indexAxis: 'y',
                 responsive: true,
                 maintainAspectRatio: false,
+                 layout: {
+                    padding: {
+                        left: 50
+                    }
+                },
                 scales: {
                     x: {
                         beginAtZero: true,
