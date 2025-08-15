@@ -211,7 +211,7 @@
         </section>
 
         <section id="roadmap" class="my-12 md:my-16">
-            <h2 class="section-title">Hoja de Ruta: Etapa 1, Etapa 2, Etapa 3</h2>
+            <h2 class="section-title">Hoja de Ruta de Implementación</h2>
             <p class="section-subtitle">Proponemos una implementación por fases para minimizar riesgos, gestionar el cambio eficazmente y demostrar valor de forma rápida y progresiva.</p>
             <div class="relative w-full p-8">
                 <div class="absolute left-1/2 top-0 bottom-0 w-1 bg-[#0EA5E9] hidden md:block"></div>
@@ -221,7 +221,7 @@
                         <div class="md:w-5/12"></div>
                         <div class="absolute left-1/2 -translate-x-1/2 md:relative md:translate-x-0 w-12 h-12 bg-[#E11D48] text-white rounded-full flex items-center justify-center text-xl font-bold z-10">1</div>
                         <div class="md:w-5/12 p-6 card">
-                            <h3 class="text-lg font-bold text-[#E11D48]">Fase 1: Gatear (Meses 1-2)</h3>
+                            <h3 class="text-lg font-bold text-[#E11D48]">Etapa 1 (Meses 1-2)</h3>
                             <p class="mt-2 text-sm text-gray-400"><strong>Programa Piloto:</strong> Automatizar la consulta de la red de proveedores para validar la tecnología y demostrar un éxito temprano.</p>
                         </div>
                     </div>
@@ -230,7 +230,7 @@
                 <div class="relative mb-8 md:mb-12">
                     <div class="md:flex items-center">
                         <div class="md:w-5/12 p-6 card md:text-right">
-                             <h3 class="text-lg font-bold text-[#E11D48]">Fase 2: Caminar (Meses 3-4)</h3>
+                             <h3 class="text-lg font-bold text-[#E11D48]">Etapa 2 (Meses 3-4)</h3>
                             <p class="mt-2 text-sm text-gray-400"><strong>Expansión de Funcionalidades:</strong> Añadir información sobre el estado de liquidaciones, integrando con el sistema de siniestros.</p>
                         </div>
                         <div class="absolute left-1/2 -translate-x-1/2 md:relative md:translate-x-0 w-12 h-12 bg-[#E11D48] text-white rounded-full flex items-center justify-center text-xl font-bold z-10">2</div>
@@ -243,7 +243,7 @@
                         <div class="md:w-5/12"></div>
                         <div class="absolute left-1/2 -translate-x-1/2 md:relative md:translate-x-0 w-12 h-12 bg-[#E11D48] text-white rounded-full flex items-center justify-center text-xl font-bold z-10">3</div>
                         <div class="md:w-5/12 p-6 card">
-                            <h3 class="text-lg font-bold text-[#E11D48]">Fase 3: Correr (Meses 5-6)</h3>
+                            <h3 class="text-lg font-bold text-[#E11D48]">Etapa 3 (Meses 5-6)</h3>
                             <p class="mt-2 text-sm text-gray-400"><strong>Despliegue Completo:</strong> Implementar la gestión de pagos integrada, completando la transformación del servicio transaccional.</p>
                         </div>
                     </div>
@@ -271,20 +271,23 @@
         Chart.defaults.color = FONT_COLOR;
         
         function processLabel(label, maxLength = 16) {
-            if (label.length <= maxLength) {
+            if (typeof label !== 'string' || label.length <= maxLength) {
                 return label;
             }
             const words = label.split(' ');
             let lines = [];
             let currentLine = '';
             for (const word of words) {
-                if ((currentLine + word).length > maxLength) {
-                    lines.push(currentLine.trim());
-                    currentLine = '';
+                if ((currentLine + ' ' + word).trim().length > maxLength && currentLine.length > 0) {
+                    lines.push(currentLine);
+                    currentLine = word;
+                } else {
+                    currentLine = (currentLine + ' ' + word).trim();
                 }
-                currentLine += word + ' ';
             }
-            lines.push(currentLine.trim());
+            if (currentLine.length > 0) {
+                lines.push(currentLine);
+            }
             return lines;
         }
 
@@ -342,10 +345,11 @@
             }
         });
 
+        const modelComparisonLabels = ['Costo por Interacción', 'Disponibilidad (h/sem)', 'Precisión de Datos'];
         new Chart(document.getElementById('modelComparisonChart'), {
             type: 'bar',
             data: {
-                labels: ['Costo por Interacción', 'Disponibilidad (h/sem)', 'Precisión de Datos'],
+                labels: modelComparisonLabels.map(label => processLabel(label)),
                 datasets: [
                     {
                         label: 'Agente Humano',
@@ -384,15 +388,20 @@
                     tooltip: {
                         ...SHARED_TOOLTIP_OPTIONS.plugins.tooltip,
                         callbacks: {
+                           title: (tooltipItems) => {
+                                const originalLabel = modelComparisonLabels[tooltipItems[0].dataIndex];
+                                return originalLabel;
+                           },
                            label: function(context) {
                                 let label = context.dataset.label || '';
                                 if (label) {
                                     label += ': ';
                                 }
                                 if (context.parsed.x !== null) {
-                                    if (context.label === 'Costo por Interacción') {
+                                    const originalLabel = modelComparisonLabels[context.dataIndex];
+                                    if (originalLabel === 'Costo por Interacción') {
                                         label += new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(context.parsed.x);
-                                    } else if (context.label === 'Disponibilidad (h/sem)') {
+                                    } else if (originalLabel === 'Disponibilidad (h/sem)') {
                                         label += context.parsed.x + 'h';
                                     } else {
                                         label += context.parsed.x + '%';
