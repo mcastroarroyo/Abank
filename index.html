@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografía: Potencial del Agente IA para AseguradoraBank.com</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827;
+            color: #E5E7EB;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .kpi-card {
+            background-color: #1F2937;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            text-align: center;
+            border: 1px solid #374151;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .kpi-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(225, 29, 72, 0.1), 0 4px 6px -2px rgba(225, 29, 72, 0.05);
+        }
+        .kpi-value {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #E11D48;
+        }
+        .kpi-label {
+            font-size: 1rem;
+            color: #9CA3AF;
+            margin-top: 0.5rem;
+        }
+        .section-title {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: #F9FAFB;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: #9CA3AF;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem auto;
+        }
+        .card {
+             background-color: #1F2937;
+             border-radius: 0.75rem;
+             padding: 2rem;
+             border: 1px solid #374151;
+        }
+    </style>
+</head>
+<body class="text-[#E5E7EB]">
+
+    <header class="bg-black text-white text-center p-12">
+        <img src="https://storage.cloud.google.com/assesssment_bot_logo/Wursta_Logo_RGB_Primary_FullColor_Gray.png" alt="Wursta Logo" class="h-12 mx-auto mb-8">
+        <h1 class="text-4xl md:text-5xl font-black mb-4 mt-8">Transformando el Servicio al Asegurado</h1>
+        <p class="text-xl md:text-2xl font-light max-w-3xl mx-auto">El caso de negocio para un Agente de IA 24/7 en <span class="font-semibold text-[#0EA5E9]">AseguradoraBank.com</span></p>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <section id="challenge" class="my-12 md:my-16">
+            <h2 class="section-title">El Desafío Actual: Fricción y Costos Ocultos</h2>
+            <p class="section-subtitle">El viaje actual del asegurado para consultas clave es manual, lento y limitado a horarios de oficina, generando ineficiencias y una experiencia de cliente deficiente.</p>
+            <div class="card">
+                <h3 class="text-xl font-bold text-center mb-6 text-white">Flujo de Consulta Manual de un Asegurado</h3>
+                <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-4">
+                    <div class="text-center p-4 rounded-lg border-2 border-dashed border-gray-600">
+                        <div class="text-3xl mb-2">📞</div>
+                        <p class="font-semibold">1. Llamada del Cliente</p>
+                        <p class="text-sm text-gray-400">(En horario laboral)</p>
+                    </div>
+                    <div class="text-2xl text-gray-500 font-bold">→</div>
+                    <div class="text-center p-4 rounded-lg border-2 border-dashed border-gray-600">
+                        <div class="text-3xl mb-2">⏳</div>
+                        <p class="font-semibold">2. Espera en Cola</p>
+                         <p class="text-sm text-gray-400">(Tiempo perdido)</p>
+                    </div>
+                    <div class="text-2xl text-gray-500 font-bold">→</div>
+                    <div class="text-center p-4 rounded-lg border-2 border-dashed border-gray-600">
+                        <div class="text-3xl mb-2">👨‍💻</div>
+                        <p class="font-semibold">3. Búsqueda Manual</p>
+                         <p class="text-sm text-gray-400">(Propenso a errores)</p>
+                    </div>
+                    <div class="text-2xl text-gray-500 font-bold">→</div>
+                    <div class="text-center p-4 rounded-lg border-2 border-dashed border-red-400 bg-red-900/20">
+                        <div class="text-3xl mb-2">😠</div>
+                        <p class="font-semibold">4. Cliente Frustrado</p>
+                        <p class="text-sm text-red-300">(Baja satisfacción)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="costs" class="my-12 md:my-16">
+             <h2 class="section-title">El Costo de la Inacción</h2>
+             <p class="section-subtitle">Mantener el status quo no es una opción. Representa una fuga directa de rentabilidad y un riesgo creciente de pérdida de clientes frente a competidores más ágiles.</p>
+             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="kpi-card">
+                    <div class="kpi-value">~$2.00</div>
+                    <div class="kpi-label">Costo por Interacción Humana</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-value">40h</div>
+                    <div class="kpi-label">Disponibilidad Semanal del Servicio</div>
+                </div>
+                 <div class="kpi-card md:col-span-2 lg:col-span-1">
+                    <div class="kpi-value">25%</div>
+                    <div class="kpi-label">Riesgo de Fuga de Clientes</div>
+                </div>
+                <div class="card md:col-span-2">
+                    <h3 class="text-xl font-bold text-center mb-4">Distribución del Tiempo del Agente</h3>
+                    <p class="text-center text-gray-400 mb-4">Una gran parte del tiempo de los agentes se dedica a tareas repetitivas y de bajo valor que son candidatas ideales para la automatización.</p>
+                    <div class="chart-container h-64 md:h-72">
+                        <canvas id="agentTimeChart"></canvas>
+                    </div>
+                </div>
+             </div>
+        </section>
+
+        <section id="solution" class="my-12 md:my-16">
+            <h2 class="section-title">La Solución: Un Agente IA 24/7</h2>
+            <p class="section-subtitle">La implementación de un agente de IA transforma el servicio, ofreciendo respuestas instantáneas, precisas y siempre disponibles, optimizando costos y elevando la experiencia del asegurado.</p>
+            <div class="card">
+                <h3 class="text-xl font-bold text-center mb-6">Comparativa de Modelos de Servicio</h3>
+                <div class="chart-container h-80 md:h-96">
+                    <canvas id="modelComparisonChart"></canvas>
+                </div>
+                <p class="text-center text-gray-400 mt-4">El agente de IA no solo reduce drásticamente los costos por interacción, sino que ofrece una disponibilidad total y una precisión de datos superior, eliminando el error humano.</p>
+            </div>
+        </section>
+        
+        <section id="build-vs-buy" class="my-12 md:my-16">
+            <h2 class="section-title">Construir vs. Comprar: El Camino Estratégico</h2>
+            <p class="section-subtitle">Mientras las soluciones SaaS ("Comprar") ofrecen velocidad, una solución a medida ("Construir") garantiza la alineación total con los procesos y KPIs únicos de AseguradoraBank, creando una ventaja competitiva sostenible.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="card border-2 border-gray-600 opacity-70">
+                    <h3 class="text-2xl font-bold text-center mb-4 text-gray-400">Comprar (SaaS)</h3>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-start"><span class="text-gray-500 mr-2 font-bold">✗</span> <strong>Integración Limitada:</strong> Dificultad para conectar con sistemas internos personalizados.</li>
+                        <li class="flex items-start"><span class="text-gray-500 mr-2 font-bold">✗</span> <strong>Falta de Alineación a KPIs:</strong> Soluciones genéricas que no impulsan las métricas clave del negocio.</li>
+                        <li class="flex items-start"><span class="text-gray-500 mr-2 font-bold">✗</span> <strong>Dependencia del Proveedor:</strong> Sujeto a la hoja de ruta y políticas de seguridad de un tercero.</li>
+                        <li class="flex items-start"><span class="text-gray-500 mr-2 font-bold">✗</span> <strong>Ventaja Competitiva Nula:</strong> Misma tecnología disponible para todos los competidores.</li>
+                    </ul>
+                </div>
+                <div class="card border-4 border-[#E11D48] transform scale-105 shadow-2xl shadow-[#E11D48]/10">
+                    <h3 class="text-2xl font-bold text-center mb-4 text-[#E11D48]">Construir (A Medida)</h3>
+                     <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-start"><span class="text-[#0EA5E9] mr-2 font-bold">✓</span> <strong>Alineación Total con Procesos:</strong> Diseñado para optimizar los flujos de trabajo exactos de la aseguradora.</li>
+                        <li class="flex items-start"><span class="text-[#0EA5E9] mr-2 font-bold">✓</span> <strong>Enfoque en KPIs Estratégicos:</strong> Construido para medir y alcanzar los objetivos de negocio.</li>
+                        <li class="flex items-start"><span class="text-[#0EA5E9] mr-2 font-bold">✓</span> <strong>Integración Perfecta:</strong> Conexión sin fisuras con CRM y sistemas de siniestros para una vista 360°.</li>
+                        <li class="flex items-start"><span class="text-[#0EA5E9] mr-2 font-bold">✓</span> <strong>Activo Propietario y Escalable:</strong> Una ventaja competitiva duradera que evoluciona con el negocio.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="roi" class="my-12 md:my-16">
+            <h2 class="section-title">Análisis Financiero: Un Retorno Convincente</h2>
+            <p class="section-subtitle">La inversión en un agente de IA no es un gasto, es un motor de rentabilidad con un ROI proyectado y un impacto directo en el crecimiento de ingresos.</p>
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+                <div class="lg:col-span-3 card">
+                    <h3 class="text-xl font-bold text-center mb-4">Proyección de Flujo de Caja Neto Acumulado (3 Años)</h3>
+                    <p class="text-center text-gray-400 mb-4">Aunque la inversión inicial es mayor, el proyecto sigue generando un valor positivo significativo a partir del segundo año.</p>
+                    <div class="chart-container">
+                        <canvas id="roiChart"></canvas>
+                    </div>
+                </div>
+                <div class="lg:col-span-2 flex flex-col gap-8">
+                    <div class="kpi-card flex-1 justify-center flex flex-col">
+                        <div class="kpi-value text-[#0EA5E9]">~78%</div>
+                        <div class="kpi-label">Retorno de la Inversión (ROI) a 3 Años</div>
+                    </div>
+                    <div class="kpi-card flex-1 justify-center flex flex-col">
+                        <div class="kpi-value text-[#0EA5E9]">~21</div>
+                        <div class="kpi-label">Meses para Recuperar la Inversión</div>
+                    </div>
+                </div>
+                <div class="lg:col-span-5 card mt-8">
+                    <h3 class="text-xl font-bold text-center mb-4">Impacto Potencial en Ingresos por Mejora de NPS</h3>
+                     <p class="text-center text-gray-400 mb-4">Una mejor experiencia de cliente se traduce directamente en lealtad y crecimiento. Un aumento de 5-10 puntos en el Net Promoter Score (NPS) puede generar hasta ~$171k USD en ingresos anuales adicionales.</p>
+                    <div class="chart-container">
+                        <canvas id="npsImpactChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="roadmap" class="my-12 md:my-16">
+            <h2 class="section-title">Hoja de Ruta: Gatear, Caminar, Correr</h2>
+            <p class="section-subtitle">Proponemos una implementación por fases para minimizar riesgos, gestionar el cambio eficazmente y demostrar valor de forma rápida y progresiva.</p>
+            <div class="relative w-full p-8">
+                <div class="absolute left-1/2 top-0 bottom-0 w-1 bg-[#0EA5E9] hidden md:block"></div>
+                
+                <div class="relative mb-8 md:mb-12">
+                    <div class="md:flex items-center md:justify-end">
+                        <div class="md:w-5/12"></div>
+                        <div class="absolute left-1/2 -translate-x-1/2 md:relative md:translate-x-0 w-12 h-12 bg-[#E11D48] text-white rounded-full flex items-center justify-center text-xl font-bold z-10">1</div>
+                        <div class="md:w-5/12 p-6 card">
+                            <h3 class="text-lg font-bold text-[#E11D48]">Fase 1: Gatear (Meses 1-2)</h3>
+                            <p class="mt-2 text-sm text-gray-400"><strong>Programa Piloto:</strong> Automatizar la consulta de la red de proveedores para validar la tecnología y demostrar un éxito temprano.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative mb-8 md:mb-12">
+                    <div class="md:flex items-center">
+                        <div class="md:w-5/12 p-6 card md:text-right">
+                             <h3 class="text-lg font-bold text-[#E11D48]">Fase 2: Caminar (Meses 3-4)</h3>
+                            <p class="mt-2 text-sm text-gray-400"><strong>Expansión de Funcionalidades:</strong> Añadir información sobre el estado de liquidaciones, integrando con el sistema de siniestros.</p>
+                        </div>
+                        <div class="absolute left-1/2 -translate-x-1/2 md:relative md:translate-x-0 w-12 h-12 bg-[#E11D48] text-white rounded-full flex items-center justify-center text-xl font-bold z-10">2</div>
+                        <div class="md:w-5/12"></div>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="md:flex items-center md:justify-end">
+                        <div class="md:w-5/12"></div>
+                        <div class="absolute left-1/2 -translate-x-1/2 md:relative md:translate-x-0 w-12 h-12 bg-[#E11D48] text-white rounded-full flex items-center justify-center text-xl font-bold z-10">3</div>
+                        <div class="md:w-5/12 p-6 card">
+                            <h3 class="text-lg font-bold text-[#E11D48]">Fase 3: Correr (Meses 5-6)</h3>
+                            <p class="mt-2 text-sm text-gray-400"><strong>Despliegue Completo:</strong> Implementar la gestión de pagos integrada, completando la transformación del servicio transaccional.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-black text-white text-center p-8 mt-16">
+        <p class="font-bold">La inversión en IA no es un gasto, es el futuro de la experiencia del cliente.</p>
+        <p class="text-sm mt-2 text-gray-400">Análisis Estratégico para AseguradoraBank.com por WURSTA</p>
+    </footer>
+
+    <script>
+        const FONT_COLOR = '#E5E7EB';
+        const BORDER_COLOR = '#374151';
+        const PALETTE = {
+            primary: '#E11D48',
+            secondary: '#0EA5E9',
+            accent: '#F97316',
+            text: '#E5E7EB'
+        };
+
+        Chart.defaults.font.family = 'Inter';
+        Chart.defaults.color = FONT_COLOR;
+        
+        function processLabel(label, maxLength = 16) {
+            if (label.length <= maxLength) {
+                return label;
+            }
+            const words = label.split(' ');
+            let lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + word).length > maxLength) {
+                    lines.push(currentLine.trim());
+                    currentLine = '';
+                }
+                currentLine += word + ' ';
+            }
+            lines.push(currentLine.trim());
+            return lines;
+        }
+
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+
+        const SHARED_TOOLTIP_OPTIONS = {
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        title: tooltipTitleCallback
+                    },
+                    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                    titleFont: { size: 14, weight: 'bold' },
+                    bodyFont: { size: 12 },
+                    padding: 12,
+                    cornerRadius: 6,
+                    displayColors: false,
+                }
+            }
+        };
+
+        new Chart(document.getElementById('agentTimeChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Tareas Repetitivas (Automatizables)', 'Tareas Complejas (Valor Humano)'],
+                datasets: [{
+                    data: [70, 30],
+                    backgroundColor: [PALETTE.primary, PALETTE.secondary],
+                    borderColor: '#1F2937',
+                    borderWidth: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '70%',
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 20,
+                            font: { size: 12 },
+                            color: FONT_COLOR
+                        }
+                    },
+                    tooltip: SHARED_TOOLTIP_OPTIONS.plugins.tooltip
+                }
+            }
+        });
+
+        new Chart(document.getElementById('modelComparisonChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Costo por Interacción', 'Disponibilidad (h/sem)', 'Precisión de Datos'],
+                datasets: [
+                    {
+                        label: 'Agente Humano',
+                        data: [2.00, 40, 90],
+                        backgroundColor: PALETTE.secondary,
+                        borderRadius: 4,
+                    },
+                    {
+                        label: 'Agente IA',
+                        data: [0.40, 168, 100],
+                        backgroundColor: PALETTE.primary,
+                        borderRadius: 4,
+                    }
+                ]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        grid: { color: BORDER_COLOR },
+                        ticks: { color: FONT_COLOR }
+                    },
+                    y: {
+                        grid: { display: false },
+                        ticks: { color: FONT_COLOR }
+                    }
+                },
+                plugins: {
+                    legend: { 
+                        position: 'top',
+                        labels: { color: FONT_COLOR }
+                    },
+                    tooltip: {
+                        ...SHARED_TOOLTIP_OPTIONS.plugins.tooltip,
+                        callbacks: {
+                           label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.x !== null) {
+                                    if (context.label === 'Costo por Interacción') {
+                                        label += new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(context.parsed.x);
+                                    } else if (context.label === 'Disponibilidad (h/sem)') {
+                                        label += context.parsed.x + 'h';
+                                    } else {
+                                        label += context.parsed.x + '%';
+                                    }
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        new Chart(document.getElementById('roiChart'), {
+            type: 'line',
+            data: {
+                labels: ['Inicio', 'Año 1', 'Año 2', 'Año 3'],
+                datasets: [{
+                    label: 'Flujo de Caja Neto Acumulado',
+                    data: [-75000, -30000, 12000, 69000],
+                    borderColor: PALETTE.primary,
+                    backgroundColor: 'rgba(225, 29, 72, 0.1)',
+                    fill: true,
+                    tension: 0.1,
+                    pointBackgroundColor: PALETTE.primary,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        ticks: {
+                            callback: function(value, index, values) {
+                                return '$' + (value / 1000) + 'k';
+                            },
+                            color: FONT_COLOR
+                        },
+                        grid: { color: BORDER_COLOR }
+                    },
+                    x: {
+                        grid: { display: false },
+                        ticks: { color: FONT_COLOR }
+                    }
+                },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        ...SHARED_TOOLTIP_OPTIONS.plugins.tooltip,
+                        callbacks: {
+                           label: function(context) {
+                                return 'Valor: ' + new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(context.parsed.y);
+                           }
+                        }
+                    }
+                }
+            }
+        });
+
+        new Chart(document.getElementById('npsImpactChart'), {
+            type: 'bar',
+            data: {
+                labels: ['+5 Puntos NPS', '+7 Puntos NPS', '+10 Puntos NPS'],
+                datasets: [{
+                    label: 'Aumento de Ingresos Anuales',
+                    data: [85200, 120000, 171600],
+                    backgroundColor: [PALETTE.secondary, PALETTE.primary, PALETTE.accent],
+                    borderRadius: 4,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value, index, values) {
+                                return '$' + (value / 1000) + 'k';
+                            },
+                            color: FONT_COLOR
+                        },
+                        grid: { color: BORDER_COLOR }
+                    },
+                     x: {
+                        grid: { display: false },
+                        ticks: { color: FONT_COLOR }
+                    }
+                },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        ...SHARED_TOOLTIP_OPTIONS.plugins.tooltip,
+                         callbacks: {
+                           title: tooltipTitleCallback,
+                           label: function(context) {
+                                return 'Impacto: ' + new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(context.parsed.y);
+                           }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
